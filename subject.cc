@@ -93,7 +93,7 @@ void subject :: arrange_rollno()
     for(i = 0; i < total_code; i++)//SizeOfArray(set_rollno)
     {
 //        outfile<<'\n'<<set_code[i]<<endl;
-        outfile<<set_rno[i]<<'\t';
+        outfile << set_code[i] << " " << set_rno[i] << ' ';
         for(j = 0; j < set_rno[i]; j++)//SizeOfArray(set_rollno[0])
         {
             outfile<<set_rollno[i][j]<<"\t";
