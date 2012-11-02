@@ -35,7 +35,7 @@ void RollNo :: get_details()
     infile.close();
 }
 
-void RollNo :: arrange_rollno()
+void RollNo :: arrange_rollno(int strategy)
 {
     if(n == 0)
     {
@@ -44,7 +44,7 @@ void RollNo :: arrange_rollno()
     	C=-1;
     	D=-1;
     	outfile.open("demo.txt");
-        for(i = 0; i < 4; i++)
+        for(i = 0; i < strategy; i++)
         {
             for(j = 0; j < total_rno[n]; j++)
             {
@@ -98,13 +98,13 @@ void RollNo :: arrange_rollno()
     }
 }
 
-void RollNo :: next_rollno()
+void RollNo :: next_rollno(int strategy)
 {
     if( Z == 0 )
     {
         if(A >= set_trno[Z]-1)
         {
-            arrange_rollno();
+            arrange_rollno(strategy);
             A = 0;
         }
         else
@@ -115,7 +115,7 @@ void RollNo :: next_rollno()
     {
         if(B >= set_trno[Z]-1)
         {
-            arrange_rollno();
+            arrange_rollno(strategy);
             B = 0;
         }
         else
@@ -125,7 +125,7 @@ void RollNo :: next_rollno()
     {
         if(C >= set_trno[Z])
         {
-            arrange_rollno();
+            arrange_rollno(strategy);
             C = 0;
         }
         else
@@ -136,7 +136,7 @@ void RollNo :: next_rollno()
     {
         if(D >= set_trno[Z])
         {
-            arrange_rollno();
+            arrange_rollno(strategy);
             D = 0;
         }
         else
@@ -148,7 +148,7 @@ void RollNo :: next_rollno()
 
 void RollNo :: seat_alot(int strategy)
 {
-    arrange_rollno();
+    arrange_rollno(strategy);
     for(z = 0; z < total_rooms; z++)
     {
         row = rows[z];
@@ -161,28 +161,30 @@ void RollNo :: seat_alot(int strategy)
                 switch(Z)
                 {
                     case 0:
-                        next_rollno();
+                        next_rollno(strategy);
                         seat[z][x][y] = set_rollno[Z][A];
-//                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][A] <<"\t "<< Z  <<" "<<A;
+                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][A] <<"\t "<< Z  <<" "<<A;
                         Z++;
                         break;
                     
                     case 1:
-                        next_rollno();
+                        next_rollno(strategy);
                         seat[z][x][y] = set_rollno[Z][B];
-//                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][B] <<"\t "<< Z  <<" "<<B;
+                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][B] <<"\t "<< Z  <<" "<<B;
                         Z++;
                         break;
                     
                      case 2:
-                        next_rollno();
+                        next_rollno(strategy);
                         seat[z][x][y] = set_rollno[Z][C];
-//                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][C] <<"\t "<< Z  <<" "<<C;
+                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][C] <<"\t "<< Z  <<" "<<C;
+                        Z++;
                         break;
                     
                     case 3:
-                        next_rollno();
+                        next_rollno(strategy);
 //                        seat[z][x][y] = set_rollno[Z][D];
+                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][C] <<"\t "<< Z  <<" "<<C;
                         Z++;
                         break;
                 }
@@ -196,40 +198,40 @@ void RollNo :: seat_alot(int strategy)
 
 void RollNo :: show_details()
 {
-    cout<<"ROLL NO. DETAILS"<<endl
-        <<total_branches<<endl;
-    for(i = 0; i < total_branches; i++)
-    {
-        cout<<total_rno[i]<<'\t';
-        for(j = 0; j < total_rno[i]; j++)
-        {
-            cout<<rollno[i][j]<<'\t';
-        }
-        cout<<'\n';
-    }
+//    cout<<"ROLL NO. DETAILS"<<endl
+//        <<total_branches<<endl;
+//    for(i = 0; i < total_branches; i++)
+//    {
+//        cout<<total_rno[i]<<'\t';
+//        for(j = 0; j < total_rno[i]; j++)
+//        {
+//            cout<<rollno[i][j]<<'\t';
+//        }
+//        cout<<'\n';
+//    }
     
-    cout<<"ROLL NO. DETAILS"<<endl
-        <<total_rooms<<endl;
-    for( i = 0; i < total_rooms; i++)
-    {
-        cout<<room_no[i]<<'\t'<<rows[i]<<'\t'<<cols[i]<<endl;
-    }
-    outfile.open("FinalAllotment.out");
+//    cout<<"ROLL NO. DETAILS"<<endl
+//        <<total_rooms<<endl;
+//    for( i = 0; i < total_rooms; i++)
+//    {
+//        cout<<room_no[i]<<'\t'<<rows[i]<<'\t'<<cols[i]<<endl;
+//    }
+    outfile.open(FinalAllotment_out);
     outfile << "Final Allocation\n";
    // cout<<"\n SEAT ALOTTing \n \n";
     for(i = 0; i < total_rooms; i++)
     {
     	
     	outfile <<"\n\n=============== Room No: "<<room_no[i]<<"===============\n\n";
-        cout<<"\n\n=============== Room No: "<<room_no[i]<<"===============\n\n";
+//        cout<<"\n\n=============== Room No: "<<room_no[i]<<"===============\n\n";
         for(x = 0; x < rows[i]; x++)
         {
             for(y = 0; y < cols[i]; y++)
             {
-                cout<<seat[i][y][x]<<"\t";
+//                cout<<seat[i][y][x]<<"\t";
                 outfile << seat[i][y][x]<<"\t"; 
             }
-            cout<<"\n";
+//            cout<<"\n";
             outfile <<"\n";
         }
     }

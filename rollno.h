@@ -27,8 +27,8 @@ class RollNo
     RollNo();
     void get_details();
     void show_details();
-    void arrange_rollno();
+    void arrange_rollno(int strategy);
     void seat_alot(int strategy);
-    void next_rollno();
+    void next_rollno(int strategy);
 };
 
