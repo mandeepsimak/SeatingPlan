@@ -14,6 +14,8 @@
 # Executable files
 input
 subject
+strategyValid
+demo.txt
 
 # .out files (o/p files of program)
 *.out
