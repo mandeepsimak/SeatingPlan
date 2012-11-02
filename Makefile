@@ -1,12 +1,14 @@
 SUBJECT = subject.o subject_main.o 		                       		# target
 INPUT = input.o input_main.o 
+strategyValidation = rollno.o strategyVal.o strategyVal_main.o
+
 CC = g++									# compiler variable
 DEBUG = -g									# debugging flag 
 CFLAGS = -Wall -c $(DEBUG)							# linking flag
 LFLAGS = -Wall $(DEBUG)					  	  # flag used in compiling and creating object files	
 
 # All targets 
-all: run_input run_subject
+all: run_input run_subject run_strategyValid
 
 # target to generate executable file.
 
@@ -36,9 +38,25 @@ subject_main.o: subject_main.cpp subject.h
 subject.o: subject.cc subject.h files.h
 	$(CC) $(CFLAGS) subject.cc
 
+strategyValid : $(strategyValidation)
+	$(CC) $(LFLAGS) $(strategyValidation) -o strategyValid
+	#./strategyValid_compile
+
+run_strategyValid : strategyValid
+	./strategyValid
+
+strategyVal.o : strategyVal.cpp strategyVal.h rollno.h
+	$(CC) $(CFLAGS) strategyVal.cpp
+
+strategyVal_main.o : strategyVal_main.cpp
+	$(CC) $(CFLAGS) strategyVal_main.cpp
+
+rollno.o : rollno.cpp rollno.h 
+	$(CC) $(CFLAGS) rollno.cpp
+
 # to destroy all the object and exectuable file
 clean:
-	rm -f *.o *.out input subject
+	rm -f *.o *.out input subject strategyVal
 
 # to create tar file 	
 tar:
