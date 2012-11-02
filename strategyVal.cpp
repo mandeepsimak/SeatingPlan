@@ -20,7 +20,7 @@ void verification :: getInput()
 		{
 			inFile >> subjectRoll[i][j];
 		}
-		cout<<"Rooms Detail: " <<totalBranches <<" " << subjectRoll[i][j] << " " <<branchCode[i] << " "<< branchStudent[i] <<"\n";
+//		cout<<"Rooms Detail: " <<totalBranches <<" " << subjectRoll[i][j] << " " <<branchCode[i] << " "<< branchStudent[i] <<"\n";
 	}
 	inFile.close();
 }
@@ -158,7 +158,7 @@ int verification :: maxStudent(int groups)
 
 void verification :: display(int groups)
 {
-			outFile.open("strategyResults.txt");
+			outFile.open(strategyResults);
 			groupSeats = 0;
 			int selection, sum =0;
 			if(totalBranches < groups)
@@ -225,6 +225,8 @@ void verification :: display(int groups)
 					obj.get_details();
     				obj.seat_alot(strategyChoice);
    					obj.show_details();
+   					
+   				cout << "\n Sitting Plan is done.\n \n Check '" << FinalAllotment_out << "' file.\n\n" << endl;
 					
 				}
 				
