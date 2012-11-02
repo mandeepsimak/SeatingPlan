@@ -10,4 +10,9 @@ const char input_rollno_out[25] = "input_rollno.out";
 // used in subject.cc file for displaying roll nos according to subjects
 const char subject_rollno_out[25] = "subject_rollno.out";
 
-const int delay = 3;
+const int delay = 1;
+
+// used in strategyVal programs
+
+const char strategyResults[25] = "strategyResults.txt";
+const char FinalAllotment_out[25] = "FinalAllotment.out";
