@@ -183,7 +183,7 @@ void RollNo :: seat_alot(int strategy)
                     
                     case 3:
                         next_rollno(strategy);
-//                        seat[z][x][y] = set_rollno[Z][D];
+                        seat[z][x][y] = set_rollno[Z][D];
                         outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][C] <<"\t "<< Z  <<" "<<C;
                         Z++;
                         break;
