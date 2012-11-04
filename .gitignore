@@ -19,3 +19,4 @@ demo.txt
 
 # .out files (o/p files of program)
 *.out
+strategyResults.txt
