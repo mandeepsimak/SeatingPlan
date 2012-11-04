@@ -59,6 +59,65 @@ void input :: expand(string rno)	// process input.in file and
 	
 }
 
+void input :: add_seperator(string &rno)
+{
+   int sz = rno.size()+1;
+   char largchar[sz];// = roll[i].c_str();//"1-10 12 34 15 20 25-30";
+   strcpy(largchar,rno.c_str());
+   char* chars_array = strtok(largchar, " ");
+   int size = 70;
+   
+   a="0";
+   while(chars_array)
+   {
+      if(chars_array!="-")
+      {
+         a.append(",");
+         a.append(chars_array);//atoi (chars_array));//n++;
+      }
+     	chars_array = strtok(NULL, " ");
+   }
+   
+   rno = a;
+   
+}
+
+void input :: remove_zero()
+{
+   infile.open(input_expand_out);
+	for(i=0; i<t_branches; i++)
+	{
+		infile >> roll_size[i];
+		for(int j=0; j<roll_size[i]; j++)
+		{
+			infile >> roll_no[i][j];
+		}
+	}
+	infile.close();
+	
+	for(int i=0; i<t_branches; i++)
+	{
+		for(int j=0; j<roll_size[i]-1; j++)
+		{
+			roll_no[i][j] = roll_no[i][j+1];
+			//infile >> remove[j];
+		}
+		roll_size[i]--;
+	}
+	
+	outfile.open(input_expand_out);
+	for(i=0; i<t_branches; i++)
+	{
+		outfile << roll_size[i] << endl;
+		for(int j=0; j<roll_size[i]; j++)
+		{
+			outfile << roll_no[i][j] << " ";
+		}
+		outfile << endl;
+	}
+	outfile.close();
+}
+
 void input :: roll_no_processing()	// Expanding, sorting, removing 
 								// duplicate entries
 {
@@ -69,9 +128,12 @@ void input :: roll_no_processing()	// Expanding, sorting, removing
 	outfile.open(input_expand_out);
 	for(i=0; i<t_branches; i++)
 	{
+	   add_seperator(rollno[i]);
 		expand(rollno[i]);
 	}
 	outfile.close();
+	
+	remove_zero();
 	
 	// Reading roll nos from file
 	infile.open(input_expand_out);

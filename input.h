@@ -6,7 +6,7 @@
 #include <deque>
 #include <fstream>
 #include <algorithm>
-#include <string>
+#include <cstring>
 #include <cstdlib>
 #include "files.h"
 using namespace std;
@@ -25,7 +25,7 @@ protected:
 	// Roll Number variables
 	int t_branches, roll_no[min_size][max_size];
 	int roll_size[min_size], rno[max_size];
-	string branch_name[min_size], rollno[max_size], subcode[max_size];
+	string branch_name[min_size], rollno[max_size], subcode[max_size], a;
 	//char input_file[20];
 	
 	// File variable
@@ -47,4 +47,6 @@ public:
 	template<typename OutIter>
 	bool parse_number_list_with_ranges(istream& is, OutIter out);
 	void roll_no_processing();
+	void add_seperator(string &rno);
+	void remove_zero();
 };
