@@ -65,7 +65,6 @@ void input :: add_seperator(string &rno)
    char largchar[sz];// = roll[i].c_str();//"1-10 12 34 15 20 25-30";
    strcpy(largchar,rno.c_str());
    char* chars_array = strtok(largchar, " ");
-   int size = 70;
    
    a="0";
    while(chars_array)
@@ -95,7 +94,7 @@ void input :: remove_zero()
 	}
 	infile.close();
 	
-	for(int i=0; i<t_branches; i++)
+	for(i=0; i<t_branches; i++)
 	{
 		for(int j=0; j<roll_size[i]-1; j++)
 		{
