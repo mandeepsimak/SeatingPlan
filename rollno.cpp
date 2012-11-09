@@ -152,39 +152,50 @@ void RollNo :: seat_alot(int strategy)
     for(z = 0; z < total_rooms; z++)
     {
         row = rows[z];
-        col = cols[z];
+        col = cols[z];  
         
         for(x = 0; x < col; x++)
         {
+          if((x % 2) != 0)
+          {
+             if(strategy == 2)
+               Z = 1;
+             if(strategy > 2)
+               Z = 2;
+          }
+          else
+             Z = 0;
+          
             for(y = 0; y < row; y++)
             {
+               
                 switch(Z)
                 {
                     case 0:
                         next_rollno(strategy);
                         seat[z][x][y] = set_rollno[Z][A];
-                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][A] <<"\t "<< Z  <<" "<<A;
+//                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][A] <<"\t "<< Z  <<" "<<A;
                         Z++;
                         break;
                     
                     case 1:
                         next_rollno(strategy);
                         seat[z][x][y] = set_rollno[Z][B];
-                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][B] <<"\t "<< Z  <<" "<<B;
+//                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][B] <<"\t "<< Z  <<" "<<B;
                         Z++;
                         break;
                     
                      case 2:
                         next_rollno(strategy);
                         seat[z][x][y] = set_rollno[Z][C];
-                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][C] <<"\t "<< Z  <<" "<<C;
+//                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][C] <<"\t "<< Z  <<" "<<C;
                         Z++;
                         break;
                     
                     case 3:
                         next_rollno(strategy);
                         seat[z][x][y] = set_rollno[Z][D];
-                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][C] <<"\t "<< Z  <<" "<<C;
+//                        outfile << "\n\n" << seat[z][y][x] <<"\t" <<set_rollno[Z][C] <<"\t "<< Z  <<" "<<C;
                         Z++;
                         break;
                 }
