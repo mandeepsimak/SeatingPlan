@@ -38,17 +38,17 @@ void verification :: methodSelection()
 			<<"A\tA\tA\t"<<endl
 			<<"A\tA\tA\t"<<endl
 			<<"\n2. 2 Group of classes\n"<<endl
-			<<"A\tA\tA\t"<<endl
-			<<"B\tB\tB\t"<<endl
+			<<"A\tB\tA\t"<<endl
+			<<"B\tA\tB\t"<<endl
 			<<"\n3. 3 Group of classes\n"<<endl
-			<<"A\tA\tA\t"<<endl
-			<<"B\tB\tB\t"<<endl
-			<<"C\tC\tC\t"<<endl
+			<<"A\tC\tA\t"<<endl
+			<<"B\tA\tB\t"<<endl
+			<<"C\tB\tC\t"<<endl
 			<<"\n4. 4 Group of classes\n"<<endl
-			<<"A\tA\tA\t"<<endl
-			<<"B\tB\tB\t"<<endl
-			<<"C\tC\tC\t"<<endl
-			<<"D\tD\tD\t"<<endl
+			<<"A\tC\tA\t"<<endl
+			<<"B\tD\tB\t"<<endl
+			<<"C\tA\tC\t"<<endl
+			<<"D\tB\tD\t"<<endl
 			<<"\nEnter your choice:\n";
 	 	
 		cin >> strategyChoice;
