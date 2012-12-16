@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <cstring>
 #include <cstdlib>
+#include <stdlib.h>
 #include "files.h"
 using namespace std;
 

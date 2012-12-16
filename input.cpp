@@ -123,7 +123,7 @@ void input :: roll_no_processing()	// Expanding, sorting, removing
 
 	// Writing expanded form of roll nos in file
 	cout << "\n Roll Nos are expanded in '" << input_expand_out << "' file." << endl;
-	sleep(delay);
+	//sleep(delay);
 	outfile.open(input_expand_out);
 	for(i=0; i<t_branches; i++)
 	{
@@ -147,7 +147,7 @@ void input :: roll_no_processing()	// Expanding, sorting, removing
 	infile.close();
 	
 	cout << "\n Sorted and Non-Redundant Roll Nos are placed in '" << input_sorted_out << "' file." << endl;
-	sleep(delay);
+	//sleep(delay);
 	outfile.open(input_sorted_out);	
 	// Sorting of roll nos.
 	for(i=0;i<t_branches;i++)
@@ -217,7 +217,7 @@ void input :: roll_no_processing()	// Expanding, sorting, removing
 	// Writing into file
 	cout << "\n Completely Processed Roll nos are placed in '" << input_processed_out 
 	     << "' file." << endl;
-	sleep(delay);
+	//sleep(delay);
 	outfile.open(input_processed_out);
 	for(int i=0; i<t_branches; i++)
 	{
@@ -245,7 +245,7 @@ void input :: input_out_file()	// To display final o/p in file
 	outfile.close();
 	
 	cout << " Roll No Details File: " << input_rollno_out << "\n" << endl;
-	sleep(delay);
+	//sleep(delay);
 	outfile.open(input_rollno_out);
 	outfile<<t_branches<<endl;
 	for(i=0; i<t_branches; i++)
