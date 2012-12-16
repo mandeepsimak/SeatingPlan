@@ -51,7 +51,7 @@ void subject :: arrange_rollno()
         cout<<'\t'<<set_code[i]<<'\n';
         set_rno[i] = 0;
     }
-    sleep(delay);
+    //sleep(delay);
     
     // adding roll nos
     for(i = 0; i < total_branches; i++)
@@ -85,9 +85,9 @@ void subject :: arrange_rollno()
 //    }
 
     cout << "\n Roll nos are arranged according to subject codes.\n";
-    sleep(delay); 
+    //sleep(delay); 
     cout << "Output of Subject code Module placed in: " << subject_rollno_out << endl;
-    sleep(delay);  
+    //sleep(delay);  
     outfile.open(subject_rollno_out);
     outfile<<total_code<<endl;
     for(i = 0; i < total_code; i++)//SizeOfArray(set_rollno)
