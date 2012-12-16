@@ -4,8 +4,8 @@ strategyValidation = rollno.o strategyVal.o strategyVal_main.o
 
 CC = g++									# compiler variable
 DEBUG = -g									# debugging flag 
-CFLAGS = -Wall -c $(DEBUG)							# linking flag
-LFLAGS = -Wall $(DEBUG)					  	  # flag used in compiling and creating object files	
+CFLAGS = -c $(DEBUG)							# linking flag
+LFLAGS =  $(DEBUG)					  	  # flag used in compiling and creating object files	
 
 # All targets 
 all: run_input run_subject run_strategyValid
