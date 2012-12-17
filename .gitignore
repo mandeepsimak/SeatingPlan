@@ -16,6 +16,7 @@ input
 subject
 strategyValid
 demo.txt
+report
 
 # .out files (o/p files of program)
 *.out
