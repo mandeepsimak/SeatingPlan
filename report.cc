@@ -17,7 +17,6 @@ void Report :: getAllotmentDetails()
    infile.open(FinalAllotment_out);
    
    infile >> total_rooms;
-   cout << total_rooms << endl;
    
    for( i = 0; i < total_rooms; i++)
    {
@@ -28,9 +27,7 @@ void Report :: getAllotmentDetails()
          for(k = 0; k < cols[i]; k++)
          {
             infile >> seat[i][j][k];
-            cout << seat[i][j][k] << "\t";
          }
-         cout << "\n";
       }
    }
    
@@ -84,10 +81,7 @@ string Report :: branchName(int rno)
 {
    string brnch = " ";
 
-   if(rno == 0)
-      brnch = " ";
-   
-   else
+   if(rno > 0)
    {
       for(int m = 0; m < total_branches; m++)
       {
@@ -95,27 +89,31 @@ string Report :: branchName(int rno)
          {
             if (rno == rollno[m][n])
             {
-               brnch = sub_code[m];
+               brnch = branch_name[m];
                break;
             }
          }
       }
    }
+   
+   else
+      brnch  = " ";
   
 	return brnch;
 }
 
 // Adding Branch Name
 
-void Report :: addBranchName(int rno)
+void Report :: addBranchName()
 {
    cout << "\n\t Add Branch Name with roll nos(Y/N): ";
    cin >> ans;
+   cout << newline;
    
-   if ( ans == 'Y' || ans == 'y')
-      branchName(rno);
-   else
-      cout << "\n\t\t NOT ADDED!" << endl;
+//   if ( ans == 'Y' || ans == 'y')
+//      branchName(rno);
+//   else
+//      cout << "\n\t\t NOT ADDED!" << endl;
    
 }
 
@@ -123,9 +121,7 @@ void Report :: addBranchName(int rno)
 
 void Report :: generateReport()
 {
-   getAllotmentDetails();
-   getRollNoDetails();
-
+   
    cout << "\n\t Generating Outfile for Seating Plan" << endl;
    
    cout << "\t Choose your file type.\n" << endl
@@ -165,9 +161,9 @@ void Report :: generateReport()
 
 void Report :: createTextFile()
 {
+
+   addBranchName();
    outfile.open(TextFile);
-   
-   tab = "\t\t\t";
    
    for( i = 0; i < total_rooms; i++)
    {
@@ -180,11 +176,15 @@ void Report :: createTextFile()
       {
          for(k = 0; k < cols[i]; k++)
          {
-            outfile << seat[i][j][k] << tab;
+            if ( ans == 'Y' || ans == 'y')
+               outfile << branchName(seat[i][j][k]) << " " << seat[i][j][k] << tab;
+            else
+               outfile << seat[i][j][k] << tab;
          }
          
          outfile << newline;
       }
+      outfile << newline;
       
    }
    

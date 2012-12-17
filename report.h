@@ -16,8 +16,10 @@ class Report
    protected:
    
    // Allotment Details
-   int total_rooms, room_no[MIN_SIZE], rows[MIN_SIZE], cols[MIN_SIZE],
+   int total_rooms, rows[MIN_SIZE], cols[MIN_SIZE],
        seat[MIN_SIZE][MIN_SIZE][MAX_SIZE];
+   
+   string room_no[MIN_SIZE];
        
    // Roll No Details
    int total_branches, total_rno[MIN_SIZE], rollno[MIN_SIZE][MAX_SIZE];
@@ -49,7 +51,7 @@ class Report
    
    void getExamDetails();
    
-   void addBranchName(int);
+   void addBranchName();
    string branchName(int);
    
    void totalStudents();
