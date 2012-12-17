@@ -1,5 +1,6 @@
 #include"strategyVal.h"
 #include"rollno.h"
+RollNo RNO;
 //#include"input.in"
 void verification :: getInput()
 {
@@ -30,25 +31,27 @@ void verification :: methodSelection()
 {
 	do
 	{
-		cout<<"Select Strategy and enter your choice\n"
+	   system("clear");
+	
+		cout<<"Select Strategy and enter your choice"<<endl
 		/*	<<"1. two group Strategy.Example:\n\tgroupA\tgroupA\tgroupA\n\tgroupB\tgroupB\tgroupB\n\tgroupA\tgroupA\tgroupA\n\t"
 				<<"groupB\tgroupB\tgroupB\n";
 		*/
-			<<"\n1. 1 Group of classes\n"<<endl
-			<<"A\tA\tA\t"<<endl
-			<<"A\tA\tA\t"<<endl
-			<<"\n2. 2 Group of classes\n"<<endl
-			<<"A\tB\tA\t"<<endl
-			<<"B\tA\tB\t"<<endl
-			<<"\n3. 3 Group of classes\n"<<endl
-			<<"A\tC\tA\t"<<endl
-			<<"B\tA\tB\t"<<endl
-			<<"C\tB\tC\t"<<endl
-			<<"\n4. 4 Group of classes\n"<<endl
-			<<"A\tC\tA\t"<<endl
-			<<"B\tD\tB\t"<<endl
-			<<"C\tA\tC\t"<<endl
-			<<"D\tB\tD\t"<<endl
+			<<"1. Group of classes"<<endl
+			<<"\tA\tA\tA\t"<<endl
+			<<"\tA\tA\tA\t"<<endl
+			<<"\n2. Group of classes"<<endl
+			<<"\tA\tB\tA\t"<<endl
+			<<"\tB\tA\tB\t"<<endl
+			<<"\n3. Group of classes"<<endl
+			<<"\tA\tC\tA\t"<<endl
+			<<"\tB\tA\tB\t"<<endl
+			<<"\tC\tB\tC\t"<<endl
+			<<"\n4. Group of classes"<<endl
+			<<"\tA\tC\tA\t"<<endl
+			<<"\tB\tD\tB\t"<<endl
+			<<"\tC\tA\tC\t"<<endl
+			<<"\tD\tB\tD\t"<<endl
 			<<"\nEnter your choice:\n";
 	 	
 		cin >> strategyChoice;
@@ -73,9 +76,10 @@ void verification :: methodSelection()
 		*/
 			default:
 			cout<<"Oops!!! Wrong choice\n Enter your choice Again\n";
+			
 		}
-	
-	}while(strategyChoice < 1 && strategyChoice > 4);
+		
+	}while(strategyChoice < 1 || strategyChoice > 4);
 }
 
 // to calculate total available seats in all rooms
@@ -87,7 +91,7 @@ int verification :: roomsCapacity()
 	{
 		totalSeats += ( rows[j] * cols[j] );
 	}
-	cout << "\ntotal Seats = " << totalSeats;
+	cout << "\nTotal Seats = " << totalSeats;
 	return(totalSeats);
 }
 
@@ -204,11 +208,11 @@ void verification :: display(int groups)
 							{
 								cout << "\nTotal Students: " << sum;
 								cout << "\ncongratulations!!! you can get results now.";
-								RollNo obj;
 								
-								obj.get_details();
-    							obj.seat_alot(strategyChoice);
-   								obj.show_details();
+								
+								RNO.get_details();
+    							RNO.seat_alot(strategyChoice);
+   							RNO.show_details();
 					
 							}
 							else
@@ -221,15 +225,19 @@ void verification :: display(int groups)
 				}
 				else
 				{
-					RollNo obj;
-					obj.get_details();
-    				obj.seat_alot(strategyChoice);
-   					obj.show_details();
+					
+					RNO.get_details();
+    				RNO.seat_alot(strategyChoice);
+   					RNO.show_details();
    					
+   					   					
    				cout << "\n Sitting Plan is done.\n \n Check '" << FinalAllotment_out << "' file.\n\n" << endl;
+   				
 					
 				}
 				
 				
 			}
+			
 }
+

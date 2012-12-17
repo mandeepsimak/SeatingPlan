@@ -10,7 +10,7 @@ class verification
 	int branchArray[12], min, max, minPos,groupArray[7];
 	string  branchCode[15], roomName[20];
 	ifstream inFile;
-	ofstream outFile;
+	ofstream outFile, outfile;
 	int i,j;
 	
 	//methods
