@@ -260,6 +260,22 @@ void input :: input_out_file()	// To display final o/p in file
 		outfile<<endl;
 	}
 	outfile.close();
+	
+	cout << " Branch and RollNo File: " << input_rollno_out << "\n" << endl;
+	//sleep(delay);
+	outfile.open(input_branch_out);
+	outfile<<t_branches<<endl;
+	for(i=0; i<t_branches; i++)
+	{
+		outfile<<branch_name[i]<<" "<< roll_size[i] << " " << endl;
+		
+		for(j=0; j<roll_size[i]; j++)
+		{
+			outfile << roll_no[i][j] << " ";
+		}
+		outfile<<endl;
+	}
+	outfile.close();
 }
 
 template<typename OutIter>  // For expanding roll nos
