@@ -17,3 +17,9 @@ const int delay = 1;
 
 const char strategyResults[25] = "strategyResults.txt";
 const char FinalAllotment_out[25] = "FinalAllotment.out";
+
+// Report Files
+
+const char TextFile[25] = "SeatPlan.txt";
+const char HTMLFile[25] = "SeatPlan.html";
+const char CSVFile[25] = "SeatPlan.csv";
