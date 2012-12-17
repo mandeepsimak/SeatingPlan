@@ -207,42 +207,69 @@ void RollNo :: seat_alot(int strategy)
     }
 }
 
+string RollNo :: branch(int rno)
+{
+	string brnch = " ";
+
+   if(rno == 0)
+      brnch = " ";
+   
+   else
+   {
+      for(int m = 0; m < total_branches; m++)
+      {
+         for(int n = 0; n < total_rno[i]; n++)
+         {
+            if (rno == rollno[m][n])
+            {
+               brnch = subjectCode[m];
+               break;
+            }
+         }
+      }
+   }
+  
+	return brnch;
+}
+
+
+void RollNo :: count_rollno()
+{
+//	for(x=0;x<t_branches;x++)
+//	{
+//		count[x]=0;
+//	}
+}
+
 void RollNo :: show_details()
 {
-//    cout<<"ROLL NO. DETAILS"<<endl
-//        <<total_branches<<endl;
-//    for(i = 0; i < total_branches; i++)
-//    {
-//        cout<<total_rno[i]<<'\t';
-//        for(j = 0; j < total_rno[i]; j++)
-//        {
-//            cout<<rollno[i][j]<<'\t';
-//        }
-//        cout<<'\n';
-//    }
-    
-//    cout<<"ROLL NO. DETAILS"<<endl
-//        <<total_rooms<<endl;
-//    for( i = 0; i < total_rooms; i++)
-//    {
-//        cout<<room_no[i]<<'\t'<<rows[i]<<'\t'<<cols[i]<<endl;
-//    }
+
     outfile.open(FinalAllotment_out);
-    outfile << "Final Allocation\n";
-   // cout<<"\n SEAT ALOTTing \n \n";
+//    outfile << "Final Allocation\n";
+
+   outfile << total_rooms << endl;
     for(i = 0; i < total_rooms; i++)
     {
     	
-    	outfile <<"\n\n=============== Room No: "<<room_no[i]<<"===============\n\n";
-//        cout<<"\n\n=============== Room No: "<<room_no[i]<<"===============\n\n";
+//    	outfile <<"\n\n=============== Room No: "<<room_no[i]<<" ===============\n\n";
+
+
+//      for(x = 0; x < rows[i]; x++)
+//      {
+//         outfile<< "\t   " << (x+1) ;
+//      }
+      outfile << room_no[i] << " " << rows[i]  << " " << cols[i] << endl;
+
         for(x = 0; x < rows[i]; x++)
         {
+//            outfile << (x+1)<< "\t";
             for(y = 0; y < cols[i]; y++)
             {
-//                cout<<seat[i][y][x]<<"\t";
-                outfile << seat[i][y][x]<<"\t"; 
+//                outfile << branch(seat[i][y][x]) << " " << seat[i][y][x]<<"\t\t";
+                outfile << seat[i][y][x]<<"\t";
+               
             }
-//            cout<<"\n";
+
             outfile <<"\n";
         }
     }
