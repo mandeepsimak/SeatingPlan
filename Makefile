@@ -1,6 +1,7 @@
 SUBJECT = subject.o subject_main.o 		                       		# target
 INPUT = input.o input_main.o 
 strategyValidation = rollno.o strategyVal.o strategyVal_main.o
+report = report.o report_main.o
 
 CC = g++									# compiler variable
 DEBUG = -g									# debugging flag 
