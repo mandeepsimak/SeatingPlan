@@ -8,6 +8,18 @@ Report :: Report()
    newline = "\n";
    
    i = j = k = 0;
+   
+   // HTML Tag Variables
+   bold = "<b>";  cbold = "</b>";
+   table = "<table border = \"1\" align = \"center\" cellpadding = \"4\" >";   ctable = "</table>";
+   th = "<th>";   cth = "</th>";
+   tr = "<tr>";   ctr = "</tr>";
+   td = "<td width = \"80\" height = \"30\" align = \"center\">";   ctd = "</td>";
+   brk = "<br>";
+   
+   htmlstart = "<html> <head> <title>Seating Plan</title> </head> <body align = \"center\">";
+   htmlend = "</body></html>";
+  
 }
 
 // Getting Allotment Details from "FinalAllotment.out" File
@@ -157,20 +169,21 @@ void Report :: generateReport()
    
 }
 
-// Creating Text File
+// Creating File
 
-void Report :: createTextFile()
+void Report :: createFile(const char* File)
 {
 
    addBranchName();
-   outfile.open(TextFile);
+   outfile.open(File);
    
    for( i = 0; i < total_rooms; i++)
    {
-      outfile << tab << room_no[i] << endl
-              << tab << exam_name << endl
-              << tab << exam_date << tab << exam_time << endl
-              << tab << exam_venue << newline << endl;
+      outfile << tab << tab << "Room: " << room_no[i] << newline
+              << tab << tab << exam_name << newline
+              << tab << tab << "Date:" << exam_date 
+              << tab << "Time: " << exam_time << newline
+              << tab << tab << exam_venue << newline << newline;
       
       for( j = 0; j < rows[i]; j++)
       {
@@ -191,18 +204,75 @@ void Report :: createTextFile()
    outfile.close();
 }
 
+// Creating Text File
+
+void Report :: createTextFile()
+{
+   createFile(TextFile);
+}
+
 // Creating CSV File
 
 void Report :: createCSVFile()
 {
-
+   createFile(CSVFile);
+   //system("SeatPlan.txt > SeatPlan.csv");
 }
 
 // Creating HTML File
 
 void Report :: createHTMLFile()
 {
+   tab = "&nbsp &nbsp &nbsp &nbsp &nbsp";
+//   newline = "<br>";
+//   createFile(HTMLFile);
 
+   addBranchName();
+   outfile.open(HTMLFile);
+   
+   outfile << htmlstart << brk;
+   
+   for( i = 0; i < total_rooms; i++)
+   {
+      outfile << bold << "Room: " << room_no[i] << brk
+              << exam_name << brk
+              << "Date: " << exam_date << tab 
+              << "Time: " << exam_time << brk
+              << exam_venue << cbold << brk << brk;
+              
+      outfile << table << brk;
+      
+      outfile << tr;
+      for( j = 0; j < (cols[i] + 1); j++)
+      {
+         outfile << th << j << cth;
+      }
+      outfile << ctr;
+      
+      for( j = 0; j < rows[i]; j++)
+      {
+         outfile << tr;
+         outfile << td << (j + 1) << ctd;
+         for(k = 0; k < cols[i]; k++)
+         {
+            
+            if ( ans == 'Y' || ans == 'y')
+               outfile << td << branchName(seat[i][j][k]) << " " << seat[i][j][k] << ctd;
+            else
+               outfile << td << seat[i][j][k] << ctd;
+         }
+         
+         outfile << ctr;
+         
+      }
+      outfile << ctable;
+      outfile << brk;
+   }
+   
+   outfile << htmlend;
+   
+   outfile.close();
+   
 }
 
 // Creating All Files

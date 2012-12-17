@@ -41,6 +41,10 @@ class Report
    ofstream outfile;
    
    string tab, newline;
+   
+   // HTML Tag variables
+   string bold, cbold, table, ctable, th, tr, td, cth, ctr, ctd,
+          htmlstart, htmlend, brk;
       
    public:
    
@@ -58,6 +62,7 @@ class Report
    
    void generateReport();
    
+   void createFile(const char*);
    void createCSVFile();
    void createHTMLFile();
    void createTextFile();
