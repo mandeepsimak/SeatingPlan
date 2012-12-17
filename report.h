@@ -31,16 +31,35 @@ class Report
    int choice;
    char ans;
    
+   // Examination Variables
+   string exam_name, exam_date, exam_time, exam_venue;
+   
    // File Stream Variables
    ifstream infile;
    ofstream outfile;
+   
+   string tab, newline;
       
    public:
+   
+   Report();
    
    void getAllotmentDetails();
    void getRollNoDetails();
    
+   void getExamDetails();
+   
+   void addBranchName(int);
+   string branchName(int);
+   
+   void totalStudents();
+   
    void generateReport();
+   
+   void createCSVFile();
+   void createHTMLFile();
+   void createTextFile();
+   void createAllFiles();
    
    void Main();
    
