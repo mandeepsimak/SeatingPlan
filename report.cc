@@ -14,12 +14,12 @@ Report :: Report()
    table = "<table border = \"1\" align = \"center\" cellpadding = \"4\" >";   ctable = "</table>";
    th = "<th>";   cth = "</th>";
    tr = "<tr>";   ctr = "</tr>";
-   td = "<td width = \"80\" height = \"30\" align = \"center\">";   ctd = "</td>";
+   td = "<td width = \"80\" height = \"30\" align = \"center\" valign = \"center\" >";   ctd = "</td>";
    brk = "<br>";
    div = "<div>";
    cdiv = "</div>";
    
-   htmlstart = "<html> <head> <title>Seating Plan</title> </head> <body align = \"center\"> ";
+   htmlstart = "<html> <head> <title>Seating Plan</title> <style type=\"text/css\"> div{page-break-after: always;}  </style> </head> <body align = \"center\"> ";
    htmlend = "</body></html>";
    // <style> div{ page-break-before: always; } </style> 
 }
@@ -142,7 +142,8 @@ void Report :: generateReport()
         << " 1. Text File" << endl
         << " 2. HTML File" << endl
         << " 3. CSV File" << endl
-        << " 4. All Files " << endl
+        << " 4. PDF File " << endl
+        << " 5. All Files " << endl
         << "\n Enter Choice: ";
    cin >> choice; 
    
@@ -150,18 +151,29 @@ void Report :: generateReport()
    {
       case 1:
          createTextFile();
+         cout << newline << tab << "Check " << TextFile << " File." << endl;
          break;
          
       case 2:
          createHTMLFile();
+         cout << newline << tab << "Check " << HTMLFile << " File." << endl;
          break;
          
       case 3:
          createCSVFile();
+         cout << newline << tab << "Check " << CSVFile << " File." << endl;
          break;
          
       case 4:
+         createPDFFile();
+         cout << newline << tab << "Check " << PDFFile << " File." << endl;
+         break;
+      
+      case 5:
          createAllFiles();
+         cout << newline << tab << "Check All Files." << endl
+              << TextFile << tab << CSVFile << tab 
+              << HTMLFile << tab << PDFFile << newline;
          break;
          
       default:
@@ -175,8 +187,8 @@ void Report :: generateReport()
 
 void Report :: createFile(const char* File)
 {
-
-   addBranchName();
+   if(choice != 5)
+      addBranchName();
    outfile.open(File);
    
    for( i = 0; i < total_rooms; i++)
@@ -210,7 +222,7 @@ void Report :: createFile(const char* File)
 
 void Report :: createTextFile()
 {
-   createFile(TextFile);
+   createFile(TextFile);   
 }
 
 // Creating CSV File
@@ -218,7 +230,6 @@ void Report :: createTextFile()
 void Report :: createCSVFile()
 {
    createFile(CSVFile);
-   //system("SeatPlan.txt > SeatPlan.csv");
 }
 
 // Creating HTML File
@@ -231,16 +242,14 @@ void Report :: createHTMLFile()
       tab = "     ";
 //   newline = "<br>";
 //   createFile(HTMLFile);
-
-   addBranchName();
+   if(choice != 5)
+      addBranchName();
    outfile.open(HTMLFile);
    
    outfile << htmlstart << brk;
    
    for( i = 0; i < total_rooms; i++)
    {
-   
-      outfile << "<p style=\"page-break-after:always\">";
       outfile << div;
       outfile << bold << "Room: " << room_no[i] << brk
               << exam_name << brk
@@ -283,13 +292,33 @@ void Report :: createHTMLFile()
    
    outfile.close();
    
+   if(choice == 2)
+      cout << newline << tab << "Check " << HTMLFile << " File." << endl;
+   
+}
+
+void Report :: createPDFFile()
+{
+   createHTMLFile();
+   string cmd;
+   cmd = "wkhtmltopdf ";
+   cmd += HTMLFile; 
+   cmd += " ";
+   cmd += PDFFile;
+   
+   tab = "\t";
+   
+   system(cmd.c_str());
 }
 
 // Creating All Files
 
 void Report :: createAllFiles()
 {
-
+   addBranchName();
+   createTextFile();
+   createCSVFile();
+   createPDFFile();
 }
 
 // Method for calling all functions

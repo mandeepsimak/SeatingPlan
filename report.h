@@ -67,6 +67,7 @@ class Report
    void createHTMLFile();
    void createTextFile();
    void createAllFiles();
+   void createPDFFile();
    
    void Main();
    
