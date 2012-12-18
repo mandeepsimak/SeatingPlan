@@ -44,7 +44,7 @@ class Report
    
    // HTML Tag variables
    string bold, cbold, table, ctable, th, tr, td, cth, ctr, ctd,
-          htmlstart, htmlend, brk;
+          htmlstart, htmlend, brk, div, cdiv;
       
    public:
    

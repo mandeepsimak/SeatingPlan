@@ -16,10 +16,12 @@ Report :: Report()
    tr = "<tr>";   ctr = "</tr>";
    td = "<td width = \"80\" height = \"30\" align = \"center\">";   ctd = "</td>";
    brk = "<br>";
+   div = "<div>";
+   cdiv = "</div>";
    
-   htmlstart = "<html> <head> <title>Seating Plan</title> </head> <body align = \"center\">";
+   htmlstart = "<html> <head> <title>Seating Plan</title> </head> <body align = \"center\"> ";
    htmlend = "</body></html>";
-  
+   // <style> div{ page-break-before: always; } </style> 
 }
 
 // Getting Allotment Details from "FinalAllotment.out" File
@@ -223,7 +225,10 @@ void Report :: createCSVFile()
 
 void Report :: createHTMLFile()
 {
-   tab = "&nbsp &nbsp &nbsp &nbsp &nbsp";
+   if (choice == 2)
+      tab = "&nbsp &nbsp &nbsp &nbsp &nbsp";
+   else
+      tab = "     ";
 //   newline = "<br>";
 //   createFile(HTMLFile);
 
@@ -234,6 +239,9 @@ void Report :: createHTMLFile()
    
    for( i = 0; i < total_rooms; i++)
    {
+   
+      outfile << "<p style=\"page-break-after:always\">";
+      outfile << div;
       outfile << bold << "Room: " << room_no[i] << brk
               << exam_name << brk
               << "Date: " << exam_date << tab 
@@ -252,7 +260,7 @@ void Report :: createHTMLFile()
       for( j = 0; j < rows[i]; j++)
       {
          outfile << tr;
-         outfile << td << (j + 1) << ctd;
+         outfile << td << bold << (j + 1) << cbold << ctd;
          for(k = 0; k < cols[i]; k++)
          {
             
@@ -267,6 +275,8 @@ void Report :: createHTMLFile()
       }
       outfile << ctable;
       outfile << brk;
+      
+      outfile << cdiv;
    }
    
    outfile << htmlend;
