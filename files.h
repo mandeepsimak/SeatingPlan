@@ -23,3 +23,4 @@ const char FinalAllotment_out[25] = "FinalAllotment.out";
 const char TextFile[25] = "SeatPlan.txt";
 const char HTMLFile[25] = "SeatPlan.html";
 const char CSVFile[25] = "SeatPlan.csv";
+const char PDFFile[25] = "SeatPlan.pdf";
