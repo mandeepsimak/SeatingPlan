@@ -104,6 +104,10 @@ string Report :: branchName(int rno)
             if (rno == rollno[m][n])
             {
                brnch = branch_name[m];
+               brnch += " ";
+               std::stringstream srno;
+               srno << rno;
+               brnch += srno.str();
                break;
             }
          }
@@ -111,7 +115,7 @@ string Report :: branchName(int rno)
    }
    
    else if (rno == 0)
-      brnch  = " ";
+      brnch  = " - ";
   
 	return brnch;
 }
@@ -151,29 +155,33 @@ void Report :: generateReport()
    {
       case 1:
          createTextFile();
-         cout << newline << tab << "Check " << TextFile << " File." << endl;
+         cout << newline << tab << "Check " << TextFile << " File."
+              << newline << endl;
          break;
          
       case 2:
          createHTMLFile();
-         cout << newline << tab << "Check " << HTMLFile << " File." << endl;
+         cout << newline << tab << "Check " << HTMLFile << " File." 
+              << newline << endl;
          break;
          
       case 3:
          createCSVFile();
-         cout << newline << tab << "Check " << CSVFile << " File." << endl;
+         cout << newline << tab << "Check " << CSVFile << " File." 
+              << newline << endl;
          break;
          
       case 4:
          createPDFFile();
-         cout << newline << tab << "Check " << PDFFile << " File." << endl;
+         cout << newline << tab << "Check " << PDFFile << " File." 
+              << newline << endl;
          break;
       
       case 5:
          createAllFiles();
          cout << newline << tab << "Check All Files." << endl
               << TextFile << tab << CSVFile << tab 
-              << HTMLFile << tab << PDFFile << newline;
+              << HTMLFile << tab << PDFFile << newline << endl;
          break;
          
       default:
@@ -204,7 +212,7 @@ void Report :: createFile(const char* File)
          for(k = 0; k < cols[i]; k++)
          {
             if ( ans == 'Y' || ans == 'y')
-               outfile << branchName(seat[i][j][k]) << " " << seat[i][j][k] << tab;
+               outfile << branchName(seat[i][j][k]) << tab;// << " " << seat[i][j][k] << tab;
             else
                outfile << seat[i][j][k] << tab;
          }
@@ -274,7 +282,7 @@ void Report :: createHTMLFile()
          {
             
             if ( ans == 'Y' || ans == 'y')
-               outfile << td << branchName(seat[i][j][k]) << " " << seat[i][j][k] << ctd;
+               outfile << td << branchName(seat[i][j][k]) << tab;// << " " << seat[i][j][k] << ctd;
             else
                outfile << td << seat[i][j][k] << ctd;
          }
@@ -291,10 +299,10 @@ void Report :: createHTMLFile()
    outfile << htmlend;
    
    outfile.close();
-   
-   if(choice == 2)
-      cout << newline << tab << "Check " << HTMLFile << " File." << endl;
-   
+//   
+//   if(choice == 2)
+//      cout << newline << tab << "Check " << HTMLFile << " File." << endl;
+//   
 }
 
 void Report :: createPDFFile()

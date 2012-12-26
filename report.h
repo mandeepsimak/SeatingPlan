@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cstdio>
 #include <cstdlib>
+#include <sstream>
 
 #include "files.h"
 
