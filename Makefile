@@ -72,5 +72,5 @@ clean:
 	rm -f *.o *.out input subject strategyVal report
 
 # to create tar file 	
-tar:
-	tar cfv seat.tar input_main.o input.o seat_main.o seat_functions.o
+#tar:
+#	tar cfv seat.tar input_main.o input.o seat_main.o seat_functions.o
