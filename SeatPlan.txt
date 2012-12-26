@@ -1,7 +1,7 @@
 		Room: R1
-		af
-		Date:ds	Time: ds
-		sd
+		Mid
+		Date:Exam	Time: 1212
+		d
 
 IT-1 101	IT-2 202	IT-1 103	IT-2 204	
 PE-1 701	CSE-1 302	PE-1 703	CSE-1 304	
@@ -9,9 +9,9 @@ IT-2 201	IT-1 102	IT-2 203	IT-1 104
 CSE-1 301	PE-1 702	CSE-1 303	PE-1 705	
 
 		Room: R2
-		af
-		Date:ds	Time: ds
-		sd
+		Mid
+		Date:Exam	Time: 1212
+		d
 
 IT-1 105	IT-2 206	IT-1 108	IT-2 209	IT-1 111	IT-2 214	
 ME-1 401	CSE-1 306	ME-1 404	CSE-1 309	ME-1 407	CSE-1 323	
@@ -21,9 +21,9 @@ IT-1 106	IT-2 207	IT-1 109	IT-2 212	IT-1 120	IT-2 215
 ME-1 402	CSE-1 307	ME-1 405	CSE-1 310	ME-1 408	CSE-1 324	
 
 		Room: R3
-		af
-		Date:ds	Time: ds
-		sd
+		Mid
+		Date:Exam	Time: 1212
+		d
 
 IT-1 122	IT-2 219	CE-1 601	IT-4 1401	CE-2 1002	IT-4 1405	
 ME-1 410	CSE-1 327	ME-1 425	CSE-1 332	ME-1 442	ME-2 901	
@@ -35,9 +35,9 @@ IT-2 218	IT-1 125	IT-2 222	CE-2 1001	IT-4 1404	CE-2 1005
 CSE-1 326	ME-1 424	CSE-1 330	ME-1 428	CSE-1 335	ME-1 445	
 
 		Room: R4
-		af
-		Date:ds	Time: ds
-		sd
+		Mid
+		Date:Exam	Time: 1212
+		d
 
 CE-2 1006	IT-4 1409	CE-2 1010	IT-4 1415	CE-2 1014	IT-4 1420	
 SE-1 801	ME-2 905	ME-2 901	ME-2 909	ME-2 905	ME-2 924	
@@ -49,40 +49,40 @@ IT-4 1408	CE-2 1009	IT-4 1414	CE-2 1013	IT-4 1419	CE-2 1017
 ME-2 904	SE-1 805	ME-2 908	ME-2 904	ME-2 923	ME-2 908	
 
 		Room: R5
-		af
-		Date:ds	Time: ds
-		sd
+		Mid
+		Date:Exam	Time: 1212
+		d
 
-CE-2 1018	  0	CE-2 1021	PE-2 1103	IT-3 1201	  0	
+CE-2 1018	 - 	CE-2 1021	PE-2 1103	IT-3 1201	 - 	
 ME-2 909	ME-2 927	ME-2 923	CSE-2 930	ME-2 926	CSE-2 934	
 IT-4 1422	CE-2 1020	PE-2 1102	CE-2 1023	IT-2 205	IT-3 1203	
 ME-2 926	ME-2 922	CSE-2 929	ME-2 925	CSE-2 933	ME-2 928	
-CE-2 1019	PE-2 1101	CE-2 1022	PE-2 1105	IT-3 1202	  0	
+CE-2 1019	PE-2 1101	CE-2 1022	PE-2 1105	IT-3 1202	 - 	
 ME-2 910	ME-2 928	ME-2 924	CSE-2 932	ME-2 927	CSE-2 935	
 
 		Room: R5
-		af
-		Date:ds	Time: ds
-		sd
+		Mid
+		Date:Exam	Time: 1212
+		d
 
-IT-3 1204	  0	IT-3 1207	  0	IT-3 1212	  0	
-ME-2 942	  0	ME-2 945	  0	PE-3 1303	  0	
-  0	IT-3 1206	  0	IT-3 1209	  0	IT-3 1214	
-  0	ME-2 944	  0	PE-3 1302	  0	  0	
-IT-3 1205	  0	IT-3 1208	  0	IT-3 1213	  0	
-ME-2 943	  0	PE-3 1301	  0	PE-3 1305	  0	
+IT-3 1204	 - 	IT-3 1207	 - 	IT-3 1212	 - 	
+ME-2 942	 - 	ME-2 945	 - 	PE-3 1303	 - 	
+ - 	IT-3 1206	 - 	IT-3 1209	 - 	IT-3 1214	
+ - 	ME-2 944	 - 	PE-3 1302	 - 	 - 	
+IT-3 1205	 - 	IT-3 1208	 - 	IT-3 1213	 - 	
+ME-2 943	 - 	PE-3 1301	 - 	PE-3 1305	 - 	
 
 		Room: R4
-		af
-		Date:ds	Time: ds
-		sd
+		Mid
+		Date:Exam	Time: 1212
+		d
 
-IT-3 1215	  0	IT-3 1220	  0	  0	  0	
-  0	  0	  0	  0	  0	  0	
-  0	IT-3 1218	  0	IT-3 1222	  0	  0	
-  0	  0	  0	  0	  0	  0	
-IT-3 1217	  0	IT-3 1221	  0	  0	  0	
-  0	  0	  0	  0	  0	  0	
-  0	IT-3 1219	  0	  0	  0	  0	
-  0	  0	  0	  0	  0	  0	
+IT-3 1215	 - 	IT-3 1220	 - 	 - 	 - 	
+ - 	 - 	 - 	 - 	 - 	 - 	
+ - 	IT-3 1218	 - 	IT-3 1222	 - 	 - 	
+ - 	 - 	 - 	 - 	 - 	 - 	
+IT-3 1217	 - 	IT-3 1221	 - 	 - 	 - 	
+ - 	 - 	 - 	 - 	 - 	 - 	
+ - 	IT-3 1219	 - 	 - 	 - 	 - 	
+ - 	 - 	 - 	 - 	 - 	 - 	
 
