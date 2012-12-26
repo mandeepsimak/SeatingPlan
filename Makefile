@@ -9,7 +9,7 @@ CFLAGS = -c $(DEBUG)							# linking flag
 LFLAGS =  $(DEBUG)					  	  # flag used in compiling and creating object files	
 
 # All targets 
-all: run_input run_subject run_strategyValid run_report
+all: remove run_input run_subject run_strategyValid run_report
 
 # target to generate executable file.
 
@@ -69,7 +69,10 @@ report_main.o : report_main.cpp
 
 # to destroy all the object and exectuable file
 clean:
-	rm -f *.o *.out input subject strategyVal report
+	rm -f *.o *.out input subject strategyVal report SeatPlan.*
+	
+remove:
+	rm -f *.out SeatPlan.*
 
 # to create tar file 	
 #tar:
