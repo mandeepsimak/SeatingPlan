@@ -93,13 +93,13 @@ void Report :: getExamDetails()
 
 string Report :: branchName(int rno)
 {
-   string brnch = " ";
+   string brnch;// = " ";
 
    if(rno > 0)
    {
       for(int m = 0; m < total_branches; m++)
       {
-         for(int n = 0; n < total_rno[i]; n++)
+         for(int n = 0; n < total_rno[m]; n++)
          {
             if (rno == rollno[m][n])
             {
@@ -110,7 +110,7 @@ string Report :: branchName(int rno)
       }
    }
    
-   else
+   else if (rno == 0)
       brnch  = " ";
   
 	return brnch;
@@ -325,6 +325,8 @@ void Report :: createAllFiles()
 
 void Report :: Main()
 {
+   system("clear");
+
    getAllotmentDetails();
    getRollNoDetails();
 
