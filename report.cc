@@ -411,6 +411,8 @@ void BranchReport :: createBranchReport()
       outfile << ctable << brk << brk;
    }
    
+   outfile << htmlend << brk;
+   
    outfile.close();
    
    // PDF File
