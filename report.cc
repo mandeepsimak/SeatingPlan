@@ -99,9 +99,9 @@ string RoomReport :: branchName(int rno)
 
    if(rno > 0)
    {
-      for(int m = 0; m < total_branches; m++)
+      for(m = 0; m < total_branches; m++)
       {
-         for(int n = 0; n < total_rno[m]; n++)
+         for(n = 0; n < total_rno[m]; n++)
          {
             if (rno == rollno[m][n])
             {
@@ -110,6 +110,8 @@ string RoomReport :: branchName(int rno)
                std::stringstream srno;
                srno << rno;
                brnch += srno.str();
+               //brnch += " ";
+               //brnch += sub_code[m];
                break;
             }
          }
@@ -343,4 +345,107 @@ void RoomReport :: Main()
    getExamDetails();
    
    generateReport();
+}
+
+// ------------------ BranchReport Class Member Functions ----------------
+
+BranchReport :: BranchReport()
+{
+   RoomReport();
+}
+
+void BranchReport :: Main()
+{
+   RoomReport :: Main();
+   createBranchReport();
+}
+
+void BranchReport :: createBranchReport()
+{
+
+   // Text File
+   
+   outfile.open(BranchReportTextFile);
+   
+   for ( m = 0; m < total_branches; m++ )
+   {
+      outfile << "\t\t\t Branch: " << branch_name[m] << "\n" << endl
+              << "\t\t Roll No. \t\t\t\t Room No. \n" << endl;
+      
+      for ( n = 0; n < total_rno[m]; n++)
+      {
+         string rm = checkRoom (rollno[m][n]);
+         
+         outfile << "\t\t " << rollno[m][n] 
+                 << "\t\t\t\t " << rm << endl;
+         
+      }
+      
+      outfile << "\n--------------------------------------------------------"
+              << "\n" << endl;
+   }
+   
+   outfile.close();
+   
+   // HTML File
+   
+   outfile.open(BranchReportHTMLFile);
+   
+   outfile << htmlstart << brk;
+   
+   for ( m = 0; m < total_branches; m++ )
+   {
+      outfile << bold << " Branch: " << branch_name[m] << cbold << brk << endl
+              << table << tr << th << " Roll No. " << cth << th << " Room No. "
+              << cth << tr;
+      
+      for ( n = 0; n < total_rno[m]; n++)
+      {
+         string rm = checkRoom (rollno[m][n]);
+         
+         outfile << tr << td << rollno[m][n] << ctd
+                 << td << rm << ctd << ctr;
+         
+      }
+      
+      outfile << ctable << brk << brk;
+   }
+   
+   outfile.close();
+   
+   // PDF File
+   
+   string cmd;
+   cmd = "wkhtmltopdf ";
+   cmd += BranchReportHTMLFile; 
+   cmd += " ";
+   cmd += BranchReportPDFFile;
+   
+   tab = "\t";
+   
+   system(cmd.c_str());
+   
+   cout << newline << tab << "Check Branch Reports." << endl;
+   cout << BranchReportTextFile << tab 
+        << BranchReportHTMLFile << tab << BranchReportPDFFile << newline << endl; 
+   
+}
+
+string BranchReport :: checkRoom(int rno)
+{
+   string rm;
+   for( i = 0; i < total_rooms; i++)
+   {      
+      for(j = 0; j < rows[i]; j++)
+      {
+         for(k = 0; k < cols[i]; k++)
+         {
+            if (rno == seat[i][j][k])
+            {
+               rm = room_no[i];
+            }
+         }
+      }
+   }
+   return rm;
 }

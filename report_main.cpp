@@ -2,7 +2,7 @@
 
 int main(void)
 {
-   Report report;
+   BranchReport report;
    
    report.Main();
    

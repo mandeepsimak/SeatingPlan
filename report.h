@@ -28,7 +28,7 @@ class RoomReport
    string branch_name[MIN_SIZE], sub_code[MIN_SIZE];
    
    //Loop variables
-   int i, j, k;
+   int i, j, k, m, n;
    
    // Switch statement variable
    int choice;
@@ -74,11 +74,13 @@ class RoomReport
    
 };
 
-//class BranchReport : public RoomReport
-//{
-//   public:
-//   
-//   BranchReport();
-//   
-//   
-//};
+class BranchReport : public RoomReport
+{
+   public:
+   
+   BranchReport();
+   void Main();
+   void createBranchReport();
+   string checkRoom(int);
+   
+};
