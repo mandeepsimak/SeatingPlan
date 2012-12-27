@@ -24,3 +24,6 @@ const char TextFile[25] = "SeatPlan.txt";
 const char HTMLFile[25] = "SeatPlan.html";
 const char CSVFile[25] = "SeatPlan.csv";
 const char PDFFile[25] = "SeatPlan.pdf";
+const char BranchReportTextFile[25] = "BranchReport.txt";
+const char BranchReportPDFFile[25] = "BranchReport.pdf";
+const char BranchReportHTMLFile[25] = "BranchReport.html";
