@@ -12,7 +12,7 @@ using namespace std;
 const int MIN_SIZE = 50;
 const int MAX_SIZE = 100;
 
-class Report
+class RoomReport
 {
    protected:
    
@@ -49,7 +49,7 @@ class Report
       
    public:
    
-   Report();
+   RoomReport();
    
    void getAllotmentDetails();
    void getRollNoDetails();
@@ -73,3 +73,12 @@ class Report
    void Main();
    
 };
+
+//class BranchReport : public RoomReport
+//{
+//   public:
+//   
+//   BranchReport();
+//   
+//   
+//};

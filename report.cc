@@ -2,7 +2,7 @@
 
 // Constructor for initialising values
 
-Report :: Report()
+RoomReport :: RoomReport()
 {
    tab = "\t";
    newline = "\n";
@@ -11,10 +11,12 @@ Report :: Report()
    
    // HTML Tag Variables
    bold = "<b>";  cbold = "</b>";
-   table = "<table border = \"1\" align = \"center\" cellpadding = \"4\" >";   ctable = "</table>";
+   table = "<table border = \"1\" align = \"center\" cellpadding = \"4\" >";   
+   ctable = "</table>";
    th = "<th>";   cth = "</th>";
    tr = "<tr>";   ctr = "</tr>";
-   td = "<td width = \"80\" height = \"30\" align = \"center\" valign = \"center\" >";   ctd = "</td>";
+   td = "<td width = \"80\" height = \"30\" align = \"center\" valign = \"center\" >";   
+   ctd = "</td>";
    brk = "<br>";
    div = "<div>";
    cdiv = "</div>";
@@ -26,7 +28,7 @@ Report :: Report()
 
 // Getting Allotment Details from "FinalAllotment.out" File
 
-void Report :: getAllotmentDetails()
+void RoomReport :: getAllotmentDetails()
 {
    infile.open(FinalAllotment_out);
    
@@ -50,7 +52,7 @@ void Report :: getAllotmentDetails()
 
 // Getting Roll No and Branch Details from "FinalAllotment.out" File
 
-void Report :: getRollNoDetails()
+void RoomReport :: getRollNoDetails()
 {
    infile.open(input_rollno_out);
    
@@ -71,7 +73,7 @@ void Report :: getRollNoDetails()
 
 // Get Examination Details
 
-void Report :: getExamDetails()
+void RoomReport :: getExamDetails()
 {
    cout << "\n\n\t Enter Examination Details \n" << endl
         << "\t\t Examination Name: ";
@@ -91,7 +93,7 @@ void Report :: getExamDetails()
 
 // Getting Branch Name accord. to roll no
 
-string Report :: branchName(int rno)
+string RoomReport :: branchName(int rno)
 {
    string brnch;// = " ";
 
@@ -122,7 +124,7 @@ string Report :: branchName(int rno)
 
 // Adding Branch Name
 
-void Report :: addBranchName()
+void RoomReport :: addBranchName()
 {
    cout << "\n\t Add Branch Name with roll nos(Y/N): ";
    cin >> ans;
@@ -137,7 +139,7 @@ void Report :: addBranchName()
 
 // Generating Report
 
-void Report :: generateReport()
+void RoomReport :: generateReport()
 {
    
    cout << "\n\t Generating Outfile for Seating Plan" << endl;
@@ -193,7 +195,7 @@ void Report :: generateReport()
 
 // Creating File
 
-void Report :: createFile(const char* File)
+void RoomReport :: createFile(const char* File)
 {
    if(choice != 5)
       addBranchName();
@@ -228,21 +230,21 @@ void Report :: createFile(const char* File)
 
 // Creating Text File
 
-void Report :: createTextFile()
+void RoomReport :: createTextFile()
 {
    createFile(TextFile);   
 }
 
 // Creating CSV File
 
-void Report :: createCSVFile()
+void RoomReport :: createCSVFile()
 {
    createFile(CSVFile);
 }
 
 // Creating HTML File
 
-void Report :: createHTMLFile()
+void RoomReport :: createHTMLFile()
 {
    if (choice == 2)
       tab = "&nbsp &nbsp &nbsp &nbsp &nbsp";
@@ -305,7 +307,7 @@ void Report :: createHTMLFile()
 //   
 }
 
-void Report :: createPDFFile()
+void RoomReport :: createPDFFile()
 {
    createHTMLFile();
    string cmd;
@@ -321,7 +323,7 @@ void Report :: createPDFFile()
 
 // Creating All Files
 
-void Report :: createAllFiles()
+void RoomReport :: createAllFiles()
 {
    addBranchName();
    createTextFile();
@@ -331,7 +333,7 @@ void Report :: createAllFiles()
 
 // Method for calling all functions
 
-void Report :: Main()
+void RoomReport :: Main()
 {
    system("clear");
 
