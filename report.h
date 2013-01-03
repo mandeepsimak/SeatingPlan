@@ -28,11 +28,15 @@ class RoomReport
    string branch_name[MIN_SIZE], sub_code[MIN_SIZE];
    
    //Loop variables
-   int i, j, k, m, n;
+   int i, j, k, m, n, x;
    
    // Switch statement variable
    int choice;
    char ans;
+   
+   // For finding total students in room
+   int sum, count[MIN_SIZE], start_rno[MIN_SIZE], end_rno[MIN_SIZE], 
+       total_roll[MIN_SIZE], max_rno;
    
    // Examination Variables
    string exam_name, exam_date, exam_time, exam_venue;
@@ -60,6 +64,7 @@ class RoomReport
    string branchName(int);
    
    void totalStudents();
+   void showStudentDetails();
    
    void generateReport();
    

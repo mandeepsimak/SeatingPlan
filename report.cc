@@ -77,16 +77,16 @@ void RoomReport :: getExamDetails()
 {
    cout << "\n\n\t Enter Examination Details \n" << endl
         << "\t\t Examination Name: ";
-   cin >> exam_name;
+   getline(cin, exam_name, '\n');  //cin >> exam_name;
    
    cout << "\n\t\t Date: ";
-   cin >> exam_date;
+   getline(cin, exam_date, '\n');  //cin >> exam_date;
    
    cout << "\n\t\t Time: ";
-   cin >> exam_time;
+   getline(cin, exam_time, '\n');  //cin >> exam_time;
    
    cout << "\n\t\t Venue: ";
-   cin >> exam_venue;
+   getline(cin, exam_venue, '\n');  //cin >> exam_venue;
    
    cout << endl;
 }
@@ -112,6 +112,12 @@ string RoomReport :: branchName(int rno)
                brnch += srno.str();
                //brnch += " ";
                //brnch += sub_code[m];
+               count[m]++; // = count[i] + 1;
+               sum++;  //= 1;
+               if(rno < start_rno[m])
+                  start_rno[m] = rno;
+               if(rno > end_rno[m])
+                  end_rno[m] = rno;
                break;
             }
          }
@@ -122,6 +128,42 @@ string RoomReport :: branchName(int rno)
       brnch  = " - ";
   
 	return brnch;
+}
+
+void RoomReport :: showStudentDetails()
+{
+   outfile << newline;
+   for(j = 0; j < total_branches; j++)
+   {
+      if(count[j] != 0)
+         outfile << branch_name[j] << ": ";
+         
+      if(start_rno[j] != 37657 && end_rno[j] !=0)
+      {
+         if(start_rno[j]== end_rno[j])
+            outfile << "{ " << start_rno[j] << " } ";
+         else
+            outfile << "{ " << start_rno[j] << " to " << end_rno[j] << " } ";
+      }
+      
+      if(count[j] != 0)
+         outfile << " = " << count[j] << newline;
+   }
+   outfile << newline;
+   outfile << "Total Students: " << sum << newline << newline;
+}
+
+// Total students in room
+void RoomReport :: totalStudents()
+{
+   for( x = 0; x < total_branches; x++ )
+	{
+		count[x]=0;
+		start_rno[x] = 37657;
+		end_rno[x] = 0;
+//		if(total_roll[x] > max_rno)
+//			max_rno = total_roll[x];
+	}
 }
 
 // Adding Branch Name
@@ -211,6 +253,9 @@ void RoomReport :: createFile(const char* File)
               << tab << "Time: " << exam_time << newline
               << tab << tab << exam_venue << newline << newline;
       
+      sum=0;
+		totalStudents();
+      
       for( j = 0; j < rows[i]; j++)
       {
          for(k = 0; k < cols[i]; k++)
@@ -223,7 +268,8 @@ void RoomReport :: createFile(const char* File)
          
          outfile << newline;
       }
-      outfile << newline;
+      
+      showStudentDetails();
       
    }
    
@@ -295,6 +341,10 @@ void RoomReport :: createHTMLFile()
          
       }
       outfile << ctable;
+      
+      newline = brk;
+      showStudentDetails();
+      
       outfile << brk;
       
       outfile << cdiv;
